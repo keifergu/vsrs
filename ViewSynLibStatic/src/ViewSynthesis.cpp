@@ -1773,7 +1773,8 @@ int CViewInterpolationGeneral::DoOneFrameGeneral(ImageType*** RefLeft, ImageType
     pSynYuvBuffer->setDataFromImgBGR(m_imgInterpolatedView);
   }
   else
-    pSynYuvBuffer->setDataFromImgYUV(m_imgInterpolatedView);
+	// 搜索 pSynYuvBuffer 找到代码
+    pSynYuvBuffer->setDataFromImgYUV(GetSynLeftWithHole());
 
   //#ifdef _DEBUG
   //  m_ucSetup-=2;
