@@ -1,0 +1,34 @@
+/*
+* View Synthesis Reference Software
+* ****************************************************************************
+* Copyright (c) 2011/2013 Poznan University of Technology
+*
+* Address: 
+*   Poznan University of Technology, 
+*   Polanka 3 Street, Poznan, Poland
+*
+* Authors:
+*   Krysztof Wegner     <kwegner@multimedia.edu.pl>
+*   Olgierd Stankiewicz <ostank@multimedia.edu.pl>
+*
+* You may use this Software for any non-commercial purpose, subject to the
+* restrictions in this license. Some purposes which can be non-commercial are
+* teaching, academic research, and personal experimentation. You may also
+* distribute this Software with books or other teaching materials, or publish
+* the Software on websites, that are intended to teach the use of the 
+* Software.
+*
+* Reference to the following source document:
+*
+* Takanori Senoh, Kenji Yamamoto, Nobuji Tetsutani, Hiroshi Yasuda, Krzysztof Wegner, 
+* "View Synthesis Reference Software (VSRS) 4.2 with improved inpainting and hole filing"
+* ISO/IEC JTC1/SC29/WG11 MPEG2017/M40xx April 2017, Hobart, Australia
+*
+* are required in all documents that report any usage of the software.
+
+* You may not use or distribute this Software or any derivative works in any
+* form for commercial purposes. Examples of commercial purposes would be
+* running business operations, licensing, leasing, or selling the Software, or
+* distributing the Software for use with commercial products.
+* ****************************************************************************
+*/

@@ -1,0 +1,143 @@
+VSRS4_1 -> VSRS4_2
+Date            : 31 March, 2017
+Authors         : Krzysztof Wegner (Poznan University of Technology) kwegner@multimedia.edu.pl
+                : Takanori Senoh (NICT) t.senoh@nict.go.jp
+                : Kenji Yamamoto (NICT) k.yamamoto@nict.go.jp
+                : Nobuji Tetsutani (TDU) tetsutani@im.dendai.ac.jp
+                : Hiroshi Yasuda (TDU) mpegyasuda@mail.dendai.ac.jp
+Contribution    : m40657
+Changes         :
+-- Improved hole filling and impainting (Compilation flag NICT_IVSRS)
+
+==================================
+
+VSRS4_0 -> VSRS4_1
+Date            : 27 October, 2015
+Authors         : Krzysztof Wegner (Poznan University of Technology) kwegner@multimedia.edu.pl
+Contribution    : m37232
+Changes         :
+-- Depth-based view blending mode (Compilation flag POZNAN_DEPTH_BLEND)
+-- Adding projection of synthsized depth onto a common space of virtual view (Compilation flag POZNAN_DEPTH_PROJECT2COMMON)
+
+==================================
+
+VSRS3_5 -> VSRS4_0
+Date            : 27 October, 2013
+Authors         : Krzysztof Wegner (Poznan University of Technology) kwegner@multimedia.edu.pl
+Contribution    :
+Changes         :
+-- Supports for 16bit depth maps (Compilation flag POZNAN_16BIT_DEPTH)
+
+==================================
+
+VSRS3_0 -> VSRS3_0_1
+Date            : 25 May, 2009
+Authors         : Yin Zhao (Zhejiang Univ.)
+Contribution    :
+Changes         :
+- Three improvements in 1D mode, and 3 switch parameter are added in cfg file, including:
+-- Temproal Improvement Method (Switch parameter: TemporalImprovementOption)
+-- 1D Warp Enhancement         (Switch parameter: WarpEnhancementOption)
+-- Clean Boundary Noise in 1D Warping processing. (Switch parameter: CleanNoiseOption)
+
+==================================
+
+VSRS2_1 -> VSRS3_0
+Date            : 3 April, 2009
+Authors         : Dong Tian (Thomson), Kazuyoshi Suzuki (Nagoya Univ.), Cheon Lee (GIST)
+Contribution    : 
+Changes         : 
+- ViSBD was merged to VSRS
+- Temporal enhancement was implemented
+- Create a new class for boundary noise removal
+- General improvement on source code
+
+==================================
+
+ViewSynthesis2_0 -> VSRS2_1
+Date            : 19 January, 2009
+Authors         : Kazuyoshi Suzuki (Nagoya Univ.)
+Contribution    : 
+Changes         : 
+- Configuration parameter "ViewBlending" has been added. 
+
+==================================
+
+ViewSynthesis1_1 -> VSRS2_0
+Date            : 17 November, 2008
+Authors         : Shinya Shimizu (NTT)/ Kazuyoshi Suzuki (Nagoya Univ.)
+Contribution    : 
+Changes         : 
+- The name of software has been changed from ViewSynthesis to VSRS. 
+- View synthesis algorithm for 1D parallel pixel shift has been changed into the algorithm that is used for 3D warping. That is, the common view synthesis algorithm is used for 3D warping and 1D parallel pixel shift. 
+- The software has been divided into three projects. "ViewSyn" project includes the main part of the software module. "ViewSynLibStatic" project includes the libraries which are need for view synthesis. "CommomLibStatic" project includes the libraries which are used for both VSRS and DERS. 
+- The problem that depth value 0 was invalid has been solved. 
+
+==================================
+
+ViewSynthesis1_0 -> ViewSynthesis1_1
+Date            : 31 August, 2008
+Authors         : Shinya Shimizu (NTT)/ Yuji Mori and Kazuyoshi Suzuki (Nagoya Univ.)
+Contribution    : m15584
+Changes         :
+- Encapsulation of YUV objects and their process
+- Encapsulation of the processes to synthesize view
+- Sub-pel precision viewsynthesis
+- 
+- bug fix
+
+==================================
+
+VS0_4 (old Nagoya VS ver 2.3) -> ViewSynthesis1_0
+Date            : 10 August, 2008
+Author          : Software coordinators Ying Chen (TUT/Nokia)/ Kazuyoshi SUZUKI (Nagoya Univ.)
+Contribution    : Software improvement
+Changes         :
+- Added Parameter.cpp and Parameter.h (by Chen)
+- Bug fixes (by Suzuki)
+
+==================================
+VS0_3 (old Nagoya VS ver 2.2) -> VS0_4 (old Nagoya VS ver 2.3)
+Date            : 27th June, 2008
+Author          : Kazuyoshi SUZUKI (Nagoya Univ.)
+Contribution    : Software improvement 
+Changes         :
+- Z_near and Z_far values of left and right views are assigned independently.
+- In warping.cpp file, cvAddWeighted(dst, alpha, dst2, 1-alpha, 1, dst2) was replaced with cvAddWeighted(dst, 1-alpha, dst2, alpha, 0, dst2).
+- In warping.cpp file, camera name searching method was modified as follows. 
+(p=strstr(s1, s2)) == NULL -> (p=strstr(s1, s2)) == NULL || (strlen(s1) != strlen(s2))
+-Added param.close() and param.open(filename) 
+-Reading .cfg file from command line 
+-Replaced abs() with fabs() 
+
+==================================
+VS0_2 (old Nagoya VS ver 2.1) -> VS0_3 (old Nagoya VS ver 2.2)
+Date            : 2nd June, 2008
+Author          : Kazuyoshi SUZUKI (Nagoya Univ.)
+Contribution    : Software improvement 
+Changes         :
+-Changed input/output YUV image/depth map with frame by frame ==> input/output YUV image/depth map video 
+
+==================================
+VS0_1 (old Nagoya VS ver 2) -> VS0_2 (old Nagoya VS ver 2.1)
+Date            : 30th May, 2008
+Author          : Kazuyoshi SUZUKI (Nagoya Univ.)
+Contribution    : Software improvement 
+Changes         :
+-Changed input/output view image format BMP ==> YUV 4:2:0, (Referrence SC29/WG11/m15377)
+
+==================================
+VS0 (old Nagoya VS ver 1) -> VS0_1 (old Nagoya VS ver 2)
+Date            : 16th May, 2008
+Author          : Kazuyoshi SUZUKI (Nagoya University, Japan)
+Contribution    : Software improvement
+Changes         :
+- Input/output view images are processed sequencially 
+- Each parameters can be fexibly assigned by using command prompt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+VS0 (Initial version)
+Date            : 19th February, 2008
+Authors         : Yuji MORI (Nagoya University, Japan)
+Changes         : 

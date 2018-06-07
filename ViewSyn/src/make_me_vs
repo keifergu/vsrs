@@ -1,0 +1,21 @@
+
+
+g++ ViewSyn.cpp \
+../../CommonLibStatic/src/*.cpp \
+../../ViewSynLibStatic/src/*.cpp \
+-I ../include \
+-I ../../CommonLibStatic/include \
+-I ../../ViewSynLibStatic/include \
+-I opencv/include/opencv -Lopencv/lib -lcv -lcxcore -lcvaux -lhighgui -lml
+
+
+exit
+g++
+ ../../ViewSynLibStatic/src/*.cpp \
+-I ../../ViewSynLibStatic/include \
+-I opencv/include/opencv -Lopencv/lib -lcv -lcxcore -lcvaux -lhighgui -lml
+exit
+
+
+g++ ../../ViewSynLibStatic/src/ViewSynthesis.cpp
+exit
