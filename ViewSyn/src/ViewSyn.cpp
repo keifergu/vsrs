@@ -73,7 +73,8 @@ int main(int argc , char *argv[])
       (fin_view_r  = fopen(cParameter.getRightViewImageName().c_str(), "rb"))==NULL ||
       (fin_depth_l = fopen(cParameter.getLeftDepthMapName()  .c_str(), "rb"))==NULL ||
       (fin_depth_r = fopen(cParameter.getRightDepthMapName() .c_str(), "rb"))==NULL ||
-      (fout = fopen(cParameter.getOutputVirViewImageName()   .c_str(), "wb"))==NULL )
+       // 此处获取输出文件名
+	  (fout = fopen(cParameter.getOutputVirViewImageName()   .c_str(), "wb"))==NULL )
   {
     fprintf(stderr, "Can't open input file(s)\n");
     return 3;
@@ -85,17 +86,21 @@ int main(int argc , char *argv[])
   start = finish;
 #endif
 
+  // 循环读取没一帧，由于我们直接做图像插值，所以只读取一帧即可
   for(n = cParameter.getStartFrame(); n < cParameter.getStartFrame() + cParameter.getNumberOfFrames(); n++) 
   {
     printf("frame number = %d ", n);
 
+	// 读取深度图的一帧
     if( !cViewInterpolation.getDepthBufferLeft() ->readOneFrame(fin_depth_l, n) || 
         !cViewInterpolation.getDepthBufferRight()->readOneFrame(fin_depth_r, n)  ) break;
     printf(".");
 
     cViewInterpolation.setFrameNumber( n - cParameter.getStartFrame()); // Zhejiang
 
+	// 读取视图的一帧
     if(!yuvBuffer.readOneFrame(fin_view_l, n)) break;
+	// 用 1, 0 来指定是 left 还是 right
     if(!cViewInterpolation.SetReferenceImage(1, &yuvBuffer)) break;
     printf(".");
 
@@ -103,9 +108,12 @@ int main(int argc , char *argv[])
     if(!cViewInterpolation.SetReferenceImage(0, &yuvBuffer)) break;
     printf(".");
 
+	// 视图合成
     if(!cViewInterpolation.DoViewInterpolation( &yuvBuffer )) break;
     printf("."); 
     
+	// yuvbuffer 只有一帧，所以在每次插值完毕后需要再写入到磁盘上去
+	// 将 yuv 文件输出到磁盘上
     if(!yuvBuffer.writeOneFrame(fout)) break;
 
 #ifdef OUTPUT_COMPUTATIONAL_TIME

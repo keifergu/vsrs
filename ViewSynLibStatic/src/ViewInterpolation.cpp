@@ -268,6 +268,7 @@ bool CViewInterpolation::DoViewInterpolation( CIYuv<ImageType>* pSynYuvBuffer )
 	DepthType** RefDepthRight = m_pcDepthMapRight->Y;
   //*/
 
+  // 我们的文件类型为 0，所以是 通用模型
   bool ret = false;
   if (m_iSynthesisMode == 0) // General mode
     ret = xViewInterpolationGeneralMode( pSynYuvBuffer );
@@ -287,9 +288,13 @@ bool CViewInterpolation::xViewInterpolationGeneralMode(CIYuv<ImageType>* pSynYuv
   DepthType** RefDepthLeft  = m_pcDepthMapLeft->Y;
   DepthType** RefDepthRight = m_pcDepthMapRight->Y;  
   
+  // 在该函数中进行创建，生成
   if ( 0 != m_pViewSynthesisGeneral->DoOneFrameGeneral(RefLeft, RefRight, RefDepthLeft, RefDepthRight, pSynYuvBuffer) )
     return false;
 
+  // 此处使用的是通用模型，而在 DoOneFrame 里面，有具体的 leftView 和 rightView
+  // 考虑是否应该在那个函数里面获取具体的图像数据
+  
   if (getBoundaryNoiseRemoval())  {
     CIYuv<ImageType> pRefLeft;
 	  CIYuv<ImageType> pRefRight;
