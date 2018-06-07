@@ -115,7 +115,12 @@ int main(int argc , char *argv[])
 	// yuvbuffer 只有一帧，所以在每次插值完毕后需要再写入到磁盘上去
 	// 将 yuv 文件输出到磁盘上
     if(!yuvBuffer.writeOneFrame(fout)) break;
-
+	
+	// 将 yuv 文件单帧输出
+	FILE* ftmphole;
+	string fileName = "hole_" + to_string(n) + ".yuv";
+	ftmphole = fopen(fileName.c_str(), "wb");
+	
 #ifdef OUTPUT_COMPUTATIONAL_TIME
     finish = clock();
     printf("->End (%.4f sec)\n", (double)(finish - start) / CLOCKS_PER_SEC);
