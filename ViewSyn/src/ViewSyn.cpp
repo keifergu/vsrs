@@ -39,6 +39,9 @@
 #include "yuv.h"
 #include "ParameterViewInterpolation.h"
 #include "ViewInterpolation.h"
+#include<string>
+
+using namespace std;
 
 #ifndef WIN32
 #define BYTE unsigned char
@@ -120,7 +123,8 @@ int main(int argc , char *argv[])
 	FILE* ftmphole;
 	string fileName = "hole_" + to_string(n) + ".yuv";
 	ftmphole = fopen(fileName.c_str(), "wb");
-	
+	fclose(ftmphole);
+
 #ifdef OUTPUT_COMPUTATIONAL_TIME
     finish = clock();
     printf("->End (%.4f sec)\n", (double)(finish - start) / CLOCKS_PER_SEC);
