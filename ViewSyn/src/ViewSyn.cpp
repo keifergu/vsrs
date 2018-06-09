@@ -123,6 +123,7 @@ int main(int argc , char *argv[])
 	FILE* ftmphole;
 	string fileName = "hole_" + to_string(n) + ".yuv";
 	ftmphole = fopen(fileName.c_str(), "wb");
+	yuvBuffer.writeOneFrame(ftmphole);
 	fclose(ftmphole);
 
 #ifdef OUTPUT_COMPUTATIONAL_TIME
